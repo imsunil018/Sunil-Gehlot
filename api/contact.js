@@ -89,7 +89,7 @@ export default async function handler(req, res) {
                       Client Name
                     </td>
                     <td style="padding: 16px 0; font-size: 14px; font-weight: 700; color: #0f172a; vertical-align: top;">
-                      \${name}
+                      ${name}
                     </td>
                   </tr>
 
@@ -99,7 +99,7 @@ export default async function handler(req, res) {
                       Email Address
                     </td>
                     <td style="padding: 16px 0; font-size: 14px; font-weight: 650; color: #4f46e5; vertical-align: top;">
-                      <a href="mailto:\${email}" style="color: #4f46e5; text-decoration: none;">\${email}</a>
+                      <a href="mailto:${email}" style="color: #4f46e5; text-decoration: none;">${email}</a>
                     </td>
                   </tr>
 
@@ -109,7 +109,7 @@ export default async function handler(req, res) {
                       Project Type
                     </td>
                     <td style="padding: 16px 0; font-size: 14px; color: #1e293b; font-weight: 500; vertical-align: top;">
-                      \${project_category || "Not specified"}
+                      ${project_category || "Not specified"}
                     </td>
                   </tr>
 
@@ -119,17 +119,17 @@ export default async function handler(req, res) {
                       Estimated Budget
                     </td>
                     <td style="padding: 16px 0; font-size: 14px; font-weight: 700; color: #10b981; vertical-align: top;">
-                      \${budget_scale || "Not specified"}
+                      ${budget_scale || "Not specified"}
                     </td>
                   </tr>
 
                   <!-- Row 5: Subject -->
-                  <tr>
+                  <tr style="border-bottom: 1px solid #f1f5f9;">
                     <td style="padding: 16px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; vertical-align: top;">
                       Subject
                     </td>
                     <td style="padding: 16px 0; font-size: 14px; color: #0f172a; vertical-align: top; font-weight: 600;">
-                      \${subject}
+                      ${subject}
                     </td>
                   </tr>
                 </table>
@@ -142,7 +142,7 @@ export default async function handler(req, res) {
                   <tr>
                     <td style="padding: 24px;">
                       <div style="font-size: 14.5px; line-height: 1.6; color: #334155; font-style: italic; white-space: pre-wrap; font-family: Georgia, serif;">
-                        "\${message}"
+                        "${message}"
                       </div>
                     </td>
                   </tr>
@@ -152,7 +152,7 @@ export default async function handler(req, res) {
                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                   <tr>
                     <td align="center">
-                      <a href="mailto:\${email}?subject=Re:%20\${subject}" style="display: inline-block; background-color: #0f172a; color: #ffffff; font-size: 14px; font-weight: 700; text-decoration: none; padding: 14px 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15); border: 1px solid #0f172a;">
+                      <a href="mailto:${email}?subject=Re:%20${subject}" style="display: inline-block; background-color: #0f172a; color: #ffffff; font-size: 14px; font-weight: 700; text-decoration: none; padding: 14px 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15); border: 1px solid #0f172a;">
                         Reply to Client &rarr;
                       </a>
                     </td>

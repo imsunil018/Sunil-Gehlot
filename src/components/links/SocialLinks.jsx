@@ -12,8 +12,8 @@ import { SocialCard } from "./SocialCard";
 const links = [
   {
     platform: "Twitter / X",
-    handle: "@imsunil018",
-    url: "https://x.com/imsunil018",
+    handle: "@SunilLabs",
+    url: "https://x.com/SunilLabs",
     Icon: SiX,
     color: "linear-gradient(135deg, #1a1a1a 0%, #333 100%)",
     glowColor: "rgba(255,255,255,0.07)",
@@ -36,8 +36,8 @@ const links = [
   },
   {
     platform: "Instagram",
-    handle: "@imsunil018",
-    url: "https://instagram.com/imsunil018",
+    handle: "@sunilgehlot_18",
+    url: "https://instagram.com/sunilgehlot_18",
     Icon: SiInstagram,
     color: "linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%)",
     glowColor: "rgba(253,29,29,0.18)",

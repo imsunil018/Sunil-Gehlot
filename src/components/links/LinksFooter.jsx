@@ -14,13 +14,13 @@ export function LinksFooter() {
       <p className="text-xs text-muted-foreground/40">
         Created by{" "}
         <a
-          href="https://x.com/imsunil018"
+          href="https://x.com/SunilLabs"
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary/60 hover:text-primary transition-colors"
           data-testid="footer-link-twitter"
         >
-          @imsunil018
+          @SunilLabs
         </a>
       </p>
     </motion.footer>

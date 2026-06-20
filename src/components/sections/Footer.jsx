@@ -26,7 +26,7 @@ const serviceLinks = [
 
 const socialLinks = [
   {
-    href: "https://x.com/imsunil018",
+    href: "https://x.com/SunilLabs",
     icon: SiX,
     label: "Twitter / X",
     color: "#E5E7EB",
@@ -44,7 +44,7 @@ const socialLinks = [
     color: "#60A5FA",
   },
   {
-    href: "https://instagram.com/imsunil018",
+    href: "https://instagram.com/sunilgehlot_18",
     icon: SiInstagram,
     label: "Instagram",
     color: "#F472B6",
@@ -204,7 +204,7 @@ export function Footer() {
               </a>
 
               <a
-                href="https://x.com/imsunil018"
+                href="https://x.com/SunilLabs"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-start gap-2.5 group"
@@ -217,7 +217,7 @@ export function Footer() {
                     Twitter / X
                   </p>
                   <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
-                    @imsunil018
+                    @SunilLabs
                   </p>
                 </div>
               </a>
