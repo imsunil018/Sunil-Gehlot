@@ -48,9 +48,9 @@ export function BackgroundEffects() {
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0 bg-[#06060e]">
       {/* Base radial dark vignette */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(6,6,14,0.85)_85%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(6,6,14,0.95)_85%)]" />
 
-      {/* Interactive mouse follow glow */}
+      {/* Interactive mouse follow glow - optimized with radial gradient style instead of heavy CSS blur filter */}
       {isHovered && (
         <motion.div
           style={{
@@ -58,16 +58,17 @@ export function BackgroundEffects() {
             y: glowY,
             translateX: "-50%",
             translateY: "-50%",
+            background: "radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(6, 182, 212, 0.08) 50%, transparent 70%)"
           }}
-          className="fixed top-0 left-0 w-[550px] h-[550px] rounded-full bg-gradient-to-r from-primary/15 to-accent/10 blur-[130px] pointer-events-none z-10"
+          className="fixed top-0 left-0 w-[550px] h-[550px] pointer-events-none z-10"
         />
       )}
 
       {/* Dynamic Grid with Interactive Mouse-Mask */}
       <motion.div
         style={{
-          maskImage: isHovered ? gridMask : "radial-gradient(400px circle at 50% 50%, black 25%, transparent 100%)",
-          WebkitMaskImage: isHovered ? gridMask : "radial-gradient(400px circle at 50% 50%, black 25%, transparent 100%)",
+          maskImage: gridMask,
+          WebkitMaskImage: gridMask,
         }}
         className="absolute inset-0 opacity-[0.08] transition-opacity duration-500 z-0"
       >
@@ -89,7 +90,7 @@ export function BackgroundEffects() {
         }}
       />
 
-      {/* Animated Flowing Energy Wave (Primary Color) */}
+      {/* Animated Flowing Energy Wave (Primary Color) - optimized to animate translate/scale instead of morphing path 'd' to avoid console warnings */}
       <svg className="absolute inset-0 w-full h-full opacity-[0.06] pointer-events-none z-0">
         <motion.path
           d="M -100 300 C 300 100, 600 500, 1200 200 C 1500 50, 1800 400, 2100 300"
@@ -98,11 +99,8 @@ export function BackgroundEffects() {
           strokeWidth="3"
           strokeLinecap="round"
           animate={{
-            d: [
-              "M -100 300 C 300 100, 600 500, 1200 200 C 1500 50, 1800 400, 2100 300",
-              "M -100 220 C 400 420, 700 80, 1100 380 C 1450 580, 1750 180, 2100 220",
-              "M -100 300 C 300 100, 600 500, 1200 200 C 1500 50, 1800 400, 2100 300",
-            ],
+            y: [0, -30, 30, 0],
+            skewY: [0, 2, -2, 0]
           }}
           transition={{
             duration: 18,
@@ -118,11 +116,8 @@ export function BackgroundEffects() {
           strokeWidth="2.5"
           strokeLinecap="round"
           animate={{
-            d: [
-              "M -100 400 C 200 600, 500 200, 1000 500 C 1400 700, 1600 300, 2100 400",
-              "M -100 450 C 300 300, 600 600, 1100 300 C 1300 100, 1700 500, 2100 450",
-              "M -100 400 C 200 600, 500 200, 1000 500 C 1400 700, 1600 300, 2100 400",
-            ],
+            y: [0, 40, -40, 0],
+            skewY: [0, -3, 3, 0]
           }}
           transition={{
             duration: 22,
@@ -140,61 +135,49 @@ export function BackgroundEffects() {
         </defs>
       </svg>
 
-      {/* Primary aurora blob (Top Center) with morphing border radius */}
+      {/* Primary aurora blob (Top Center) - optimized using hardware-accelerated scaleX/scaleY instead of heavy CSS blur filter */}
       <motion.div
         animate={{
-          borderRadius: [
-            "30% 70% 70% 30% / 30% 30% 70% 70%",
-            "50% 50% 30% 70% / 50% 60% 40% 50%",
-            "70% 30% 52% 48% / 60% 40% 60% 40%",
-            "30% 70% 70% 30% / 30% 30% 70% 70%"
-          ],
-          scale: [1, 1.25, 0.95, 1],
-          opacity: [0.28, 0.4, 0.22, 0.28],
+          scaleX: [1, 1.25, 0.9, 1],
+          scaleY: [1, 0.9, 1.15, 1],
           x: [0, 50, -40, 0],
           y: [0, -40, 30, 0],
-          rotate: [0, 120, 240, 360]
         }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[-15%] left-[15%] w-[700px] h-[550px] bg-gradient-to-br from-primary/30 to-violet-600/10 blur-[130px]"
+        style={{
+          background: "radial-gradient(circle, rgba(139, 92, 246, 0.28) 0%, rgba(139, 92, 246, 0) 70%)",
+        }}
+        className="absolute top-[-15%] left-[15%] w-[700px] h-[550px]"
       />
 
-      {/* Secondary accent blob (Middle Right) with morphing border radius */}
+      {/* Secondary accent blob (Middle Right) - optimized */}
       <motion.div
         animate={{
-          borderRadius: [
-            "40% 60% 50% 50% / 40% 40% 60% 60%",
-            "60% 40% 60% 40% / 50% 50% 50% 50%",
-            "30% 70% 40% 60% / 60% 30% 70% 40%",
-            "40% 60% 50% 50% / 40% 40% 60% 60%"
-          ],
-          scale: [1, 1.15, 1.3, 1],
-          opacity: [0.18, 0.28, 0.15, 0.18],
+          scaleX: [1, 0.9, 1.2, 1],
+          scaleY: [1, 1.15, 0.9, 1],
           x: [0, -60, 50, 0],
           y: [0, 50, -45, 0],
-          rotate: [360, 240, 120, 0]
         }}
         transition={{ duration: 25, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
-        className="absolute top-[25%] right-[-12%] w-[600px] h-[500px] bg-gradient-to-tr from-accent/25 to-emerald-500/5 blur-[115px]"
+        style={{
+          background: "radial-gradient(circle, rgba(6, 182, 212, 0.22) 0%, rgba(6, 182, 212, 0) 70%)",
+        }}
+        className="absolute top-[25%] right-[-12%] w-[600px] h-[500px]"
       />
 
-      {/* Tertiary warm accent blob (Bottom Left) with morphing */}
+      {/* Tertiary warm accent blob (Bottom Left) - optimized */}
       <motion.div
         animate={{
-          borderRadius: [
-            "50% 50% 30% 70% / 50% 60% 40% 50%",
-            "70% 30% 52% 48% / 60% 40% 60% 40%",
-            "30% 70% 70% 30% / 30% 30% 70% 70%",
-            "50% 50% 30% 70% / 50% 60% 40% 50%"
-          ],
-          scale: [1, 1.2, 0.9, 1],
-          opacity: [0.15, 0.25, 0.18, 0.15],
+          scaleX: [1, 1.15, 0.95, 1],
+          scaleY: [1, 0.9, 1.1, 1],
           x: [0, 40, -50, 0],
           y: [0, -30, 50, 0],
-          rotate: [180, 360, 0, 180]
         }}
         transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 5 }}
-        className="absolute bottom-[-20%] left-[-8%] w-[650px] h-[550px] bg-gradient-to-tr from-pink-500/22 via-violet-500/5 to-transparent blur-[125px]"
+        style={{
+          background: "radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, rgba(236, 72, 153, 0) 70%)",
+        }}
+        className="absolute bottom-[-20%] left-[-8%] w-[650px] h-[550px]"
       />
 
       {/* Floating particles */}
@@ -225,7 +208,7 @@ export function BackgroundEffects() {
         />
       ))}
 
-      {/* Shooting stars animation */}
+      {/* Shooting stars animation - optimized to avoid using overflow-breaking 'vw' values */}
       {[
         { top: "8%", left: "-10%", duration: 5.5, delay: 2 },
         { top: "30%", left: "-10%", duration: 6.5, delay: 8.5 },
@@ -234,8 +217,8 @@ export function BackgroundEffects() {
         <motion.div
           key={`star-${idx}`}
           animate={{
-            x: ["0vw", "120vw"],
-            y: ["0vh", "60vh"],
+            x: ["-20%", "120%"],
+            y: ["-20%", "120%"],
             opacity: [0, 1, 1, 0]
           }}
           transition={{
