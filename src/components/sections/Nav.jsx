@@ -36,6 +36,11 @@ export function Nav() {
         <div className="flex items-center justify-between">
           <Link
             href="/"
+            onClick={() => {
+              if (location === "/") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
             className="text-xl font-bold font-serif tracking-tight flex items-center gap-2"
           >
             <div className="w-8 h-8 rounded bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground text-sm">
@@ -51,6 +56,11 @@ export function Nav() {
                 <Link
                   key={link.name}
                   href={link.href}
+                  onClick={() => {
+                    if (isActive) {
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }
+                  }}
                   className={`text-sm font-medium transition-colors relative py-1 ${
                     isActive
                       ? "text-primary font-semibold"
@@ -98,7 +108,12 @@ export function Nav() {
                       ? "text-primary"
                       : "text-foreground hover:text-primary"
                   }`}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    if (isActive) {
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }
+                  }}
                 >
                   <span>{link.name}</span>
                   {isActive && (
