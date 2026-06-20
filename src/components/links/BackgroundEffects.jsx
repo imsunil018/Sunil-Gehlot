@@ -58,9 +58,9 @@ export function BackgroundEffects() {
             y: glowY,
             translateX: "-50%",
             translateY: "-50%",
-            background: "radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(6, 182, 212, 0.08) 50%, transparent 70%)"
+            background: "radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, rgba(6, 182, 212, 0.06) 50%, transparent 70%)"
           }}
-          className="fixed top-0 left-0 w-[550px] h-[550px] pointer-events-none z-10"
+          className="fixed top-0 left-0 w-[280px] h-[280px] pointer-events-none z-0"
         />
       )}
 
